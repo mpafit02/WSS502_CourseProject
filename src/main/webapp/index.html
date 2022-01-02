@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>WSS502_RestService</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="js/main.js"></script>
+
+</head>
+<body>
+	<div id="register_container">
+		<div class="header">
+			<input type="text" id="name" />
+			<button id="search" onClick="findByName();">Search</button>
+		</div>
+	
+		<div class="leftArea">
+			<ul id="userAccountsList"></ul>
+		</div>
+	
+		<form id="userAccountForm">
+	
+			<div class="mainArea">
+	
+				<button id="clear" onClick="clearForm();">Clear Form</button>
+				<br>
+				<label>UserId:</label>
+				<input id="UserId" name="user_id" type="text" disabled />
+				<br>
+				<label>Email:</label>
+				<input type="text" id="user_email" name="user_email" required /> 
+				<br>
+				<label>First Name:</label>
+				<input type="text" id="user_firstname" name="user_firstname" required />
+				<br>
+				<label>Last Name:</label>
+				<input type="text" id="user_lastname" name="last_name" required/> 
+				<br> 
+				<label>Password:</label>
+				<input type="text" id="password" name="password"  required/> 
+				<br> 
+				<label>Repeat Password:</label>
+				<input type="text" id="repeat_password" name="repeat_password" required/> 
+				<br> 
+				<p id="register_message" style="color:red;"></p>
+			</div>
+			<br>
+			<div>
+				<button type="submit"  id="add" onClick="addUserAccount();">Add User</button>
+			</div>
+		</form>
+				<button type="button"  id="login" onClick="loginPage();">Login</button>
+	</div>
+
+	<div id="login_container" >
+		<form id="loginForm">
+		
+			<div class="mainAreaLogin">
+				<br>
+				<label>Email:</label>
+				<input type="text" id="user_email_login" name="user_email" required /> 
+				<br> 
+				<label>Password:</label>
+				<input type="text" id="password_login" name="password"  required /> 
+				<br> 
+				<p id="login_message" style="color:red;"></p>
+			</div>
+			<br>
+			<div>
+				<button type="submit" id="login" onClick="loginUserAccount();">Login User</button>
+			</div>
+		</form>
+				<button type="button" id="register" onClick="registerPage();">Register</button>
+	</div>
+	
+	
+	<div id="main_container" >
+	
+		<div class="leftAreaMain">
+			<ul id="userAccountsListMain"></ul>
+		</div>
+	</div>
+</body>
+</html>
