@@ -26,8 +26,22 @@
 
 </head>
 <body>
-	<div id="register_container" class="col-4">
-		<!-- <div class="header hidden">
+
+	<div class="container">
+		<br>
+		<p class="text-center">
+			This website was created by <a
+				href="https://www.linkedin.com/in/marios-pafitis/">Marios
+				Pafitis</a> as a Course Project for the lesson WSS502 at Frederick
+			University of Cyprus.
+		</p>
+		<hr>
+
+		<div class="container">
+			<div class="card bg-light">
+				<article class="card-body mx-auto" style="min-width: 400px;">
+					<div id="register_container">
+						<!-- <div class="header hidden">
 			<input type="text" id="name" class="hidden"/>
 			<button id="search" onClick="findByName();" class="hidden">Search</button>
 		</div>
@@ -35,115 +49,139 @@
 		<div class="leftArea hidden">
 			<ul id="userAccountsList"></ul>
 		</div> -->
-		<form id="userAccountForm" class="form-signin px-4 py-3">
-			<h1>Sign up</h1>
-			<div class="mainArea">
+						<form id="userAccountForm" class="form-signin">
+							<h4 class="card-title mt-3 text-center">Create Account</h4>
+							<p class="text-center">Are you ready to exchange?</p>
 
-				<div class="form-group">
-					<label for="UserId">UserId:</label> <input id="UserId"
-						name="user_id" class="form-control" type="text" disabled />
-				</div>
-				<div class="form-group">
-					<label for="user_email">Email:</label> <input type="text"
-						id="user_email" class="form-control" name="user_email" required />
-				</div>
-				<div class="form-group">
-					<label for="user_firstname">First Name:</label> <input type="text"
-						id="user_firstname" class="form-control" name="user_firstname"
-						required />
-				</div>
-				<div class="form-group">
-					<label for="user_lastname">Last Name:</label> <input type="text"
-						id="user_lastname" class="form-control" name="last_name" required />
-				</div>
-				<div class="form-group">
-					<label for="password">Password:</label> <input type="text"
-						id="password" class="form-control" name="password" required />
-				</div>
-				<div class="form-group">
-					<label for="repeat_password">Repeat Password:</label> <input
-						type="text" id="repeat_password" class="form-control"
-						name="repeat_password" required />
-				</div>
-				<p id="register_message" class="text-danger"></p>
-			</div>
-			<br>
-			<div>
-				<button type="button" id="clear" class="btn btn-secondary"
-					onClick="clearForm();">Clear Form</button>
-				<button type="button" id="login" class="btn btn-secondary"
-					onClick="loginPage();">Login</button>
-				<button type="submit" id="add" class="btn btn-primary"
-					onClick="addUserAccount();">Register</button>
-			</div>
-		</form>
-	</div>
+							<!--<div class="form-group">
+									<label for="UserId">UserId:</label> <input id="UserId"
+										name="user_id" class="form-control" type="text" disabled />
+								</div>-->
+							<label for="user_email">Email:</label>
+							<div class="form-group input-group">
+								<input type="text" id="user_email" class="form-control"
+									name="user_email" required />
+							</div>
+							<label for="user_firstname">First Name:</label>
+							<div class="form-group input-group">
+								<input type="text" id="user_firstname" class="form-control"
+									name="user_firstname" required />
+							</div>
+							<label for="user_lastname">Last Name:</label>
+							<div class="form-group input-group">
+								<input type="text" id="user_lastname" class="form-control"
+									name="last_name" required />
+							</div>
+							<label for="password">Password:</label>
+							<div class="form-group input-group">
+								<input type="text" id="password" class="form-control"
+									name="password" required />
+							</div>
+							<label for="repeat_password">Repeat Password:</label>
+							<div class="form-group input-group">
+								<input type="text" id="repeat_password" class="form-control"
+									name="repeat_password" required />
+							</div>
+							<p id="register_message" class="text-danger"></p>
+							<div class="form-group">
+								<button type="submit" id="add" class="btn btn-primary btn-block"
+									onClick="addUserAccount();">Register</button>
+							</div>
+							<hr>
+							<div class="form-group">
+								<p class="text-center">
+									Have an account? <a href="#"
+										onclick="loginPage(); return false;">Log In</a>
+								</p>
+							</div>
+							<div class="form-group">
+								<p class="text-center">
+									<a href="#" onclick="clearForm(); return false;">Clear Form</a>
+								</p>
+							</div>
+						</form>
+					</div>
 
-	<div id="login_container" class="col-4">
-		<form id="loginForm" class="form-signin px-4 py-3">
-			<h1>Log in</h1>
-			<div class="mainAreaLogin">
-				<div class="form-group">
-					<label for="user_email_login">Email:</label> <input type="text"
-						id="user_email_login" class="form-control" name="user_email"
-						required />
-				</div>
-				<div class="form-group">
-					<label for="password_login">Password:</label> <input type="text"
-						id="password_login" name="password" class="form-control" required />
-				</div>
-				<p class="text-danger" id="login_message"></p>
-			</div>
-			<br>
-			<div>
-				<button type="button" id="register" onClick="registerPage();"
-					class="btn btn-secondary">Register</button>
-				<button type="submit" id="login" onClick="loginUserAccount();"
-					class="btn btn-primary">Login</button>
-			</div>
-		</form>
-	</div>
+					<div id="login_container">
+						<form id="loginForm" class="form-signin">
+							<h4 class="card-title mt-3 text-center">Log In</h4>
+							<p class="text-center">Let's exchange!</p>
+							<label for="user_email_login">Email:</label>
+							<div class="form-group input-group">
+								<input type="text" id="user_email_login" class="form-control"
+									name="user_email" required />
+							</div>
+							<label for="password_login">Password:</label>
+							<div class="form-group input-group">
+								<input type="text" id="password_login" name="password"
+									class="form-control" required />
+							</div>
+							<p class="text-danger" id="login_message"></p>
+							<div class="form-group">
+								<button type="submit" id="add" class="btn btn-primary btn-block"
+									onClick="loginUserAccount();">Log In</button>
+							</div>
+							<hr>
+							<div class="form-group">
+								<p class="text-center">
+									Don't have an account? <a href="#"
+										onclick="registerPage(); return false;">Register</a>
+								</p>
+							</div>
+						</form>
+					</div>
 
 
-	<div id="main_container" class="col-4">
-		<form id="convertForm" class="form-signin  px-4 py-3">
-			<h1 id="welcomeUser"></h1>
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="inputFrom">From</label> <select id="inputFrom"
-						class="form-control">
-						<option selected>From...</option>
-						<option value="EUR">EUR</option>
-						<option value="USD">USD</option>
-						<option value="GBP">GBP</option>
-					</select>
-				</div>
-				<div class="form-group col-md-6">
-					<label for="inputTo">To</label> <select id="inputTo"
-						class="form-control">
-						<option selected>To...</option>
-						<option value="EUR">EUR</option>
-						<option value="USD">USD</option>
-						<option value="GBP">GBP</option>
-					</select>
-				</div>
+					<div id="main_container">
+						<form id="convertForm" class="form-signin">
+							<h4 id="welcomeUser" class="card-title mt-3 text-center"></h4>
+							<p class="text-center">Let's exchange!</p>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputFrom">From</label> <select id="inputFrom"
+										class="form-control">
+										<option value="0" selected>From...</option>
+										<option value="EUR">EUR</option>
+										<option value="USD">USD</option>
+										<option value="GBP">GBP</option>
+									</select>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputTo">To</label> <select id="inputTo"
+										class="form-control">
+										<option value="0" selected>To...</option>
+										<option value="EUR">EUR</option>
+										<option value="USD">USD</option>
+										<option value="GBP">GBP</option>
+									</select>
+								</div>
+							</div>
+							<label for="inputFromField">Amount</label>
+							<div class="form-group input-group">
+								<input type="text" class="form-control" id="inputFromField"
+									required />
+							</div>
+							<label for="outputField">Result</label>
+							<div class="form-group input-group">
+								<h3 id="outputField" class="text-left">0.00</h3>
+							</div>
+							<p id="outputFieldRate" class="font-weight-light"></p>
+							<p class="text-danger" id="convert_message"></p>
+							<div class="form-group">
+								<button type="submit" id="convert"
+									class="btn btn-primary btn-block" onClick="convertCurrency();">Convert</button>
+							</div>
+							<hr>
+							<div class="form-group">
+								<p class="text-center">
+									<a href="#" id="logout" onclick="logoutUser(); return false;">Log
+										Out</a>
+								</p>
+							</div>
+						</form>
+					</div>
+				</article>
 			</div>
-			<div class="form-row">
-				<div class="form-group col-md-12">
-					<label for="inputFromField">Amount</label>
-					<input type="text" class="form-control" id="inputFromField">
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="form-group col-md-12">
-					<label for="outputField">Result</label>
-					<h4 id="outputField" class="text-justify">0.00</h4>
-				</div>
-			</div>
-			<button type="button" id="logout" onClick="logoutUser();"
-				class="btn btn-secondary">Log Out</button>
-			<button type="submit" class="btn btn-primary">Convert</button>
-		</form>
-	</div>
+		</div>
 </body>
 </html>

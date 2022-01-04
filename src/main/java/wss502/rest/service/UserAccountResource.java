@@ -58,7 +58,7 @@ public class UserAccountResource {
 		System.out.println("emailExists: " + email);
 		return dao.emailExists(email);
 	}
-	
+
 	/*
 	 * Dimiourgoume neo user account. Exoun idio url me to proto method all to ena
 	 * einai GET kai to allo POST ara den ta berdevei.
@@ -86,7 +86,14 @@ public class UserAccountResource {
 		System.out.println("login user_account");
 		return dao.loginUserAccount(user_account);
 	}
-	
+
+	@GET
+	@Path("rates/{combo_name}")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public double getRates(@PathParam("combo_name") String combo_name) {
+		System.out.println("getting rates: " + combo_name);
+		return dao.getRates(combo_name);
+	}
 
 	@POST
 	@Path("rates")

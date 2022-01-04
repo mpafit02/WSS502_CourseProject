@@ -189,8 +189,9 @@ public class UserAccountDAO {
 			PreparedStatement ps = c.prepareStatement(sql);
 
 			String hashedPassword = encryptPassword(user_account.getUser_email(), user_account.getPassword());
-			System.out.println(user_account.getUser_email() + " "+ user_account.getPassword());
-			System.out.println("Hashed Password: " + hashedPassword);
+			// System.out.println(user_account.getUser_email() + " " +
+			// user_account.getPassword());
+			// System.out.println("Hashed Password: " + hashedPassword);
 
 			ps.setString(1, "%" + user_account.getUser_email().toUpperCase() + "%");
 			ps.setString(2, hashedPassword);
@@ -242,16 +243,16 @@ public class UserAccountDAO {
 			System.out.println(sql4);
 			try {
 				c = ConnectionHelper.getConnection();
-				
-			    Statement stmt1  = c.createStatement();
-			    Statement stmt2  = c.createStatement();
-			    Statement stmt3  = c.createStatement();
-			    Statement stmt4  = c.createStatement();
-			    
-			    stmt1.executeUpdate(sql1);
-			    stmt2.executeUpdate(sql2);
-			    stmt3.executeUpdate(sql3);
-			    stmt4.executeUpdate(sql4);
+
+				Statement stmt1 = c.createStatement();
+				Statement stmt2 = c.createStatement();
+				Statement stmt3 = c.createStatement();
+				Statement stmt4 = c.createStatement();
+
+				stmt1.executeUpdate(sql1);
+				stmt2.executeUpdate(sql2);
+				stmt3.executeUpdate(sql3);
+				stmt4.executeUpdate(sql4);
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -280,4 +281,30 @@ public class UserAccountDAO {
 		return user_account;
 	}
 
+	public double getRates(String combo_name) {
+		Connection c = null;
+
+		String sql = "SELECT * FROM rates " + "WHERE UPPER(combo_name) LIKE ?";
+		System.out.println(combo_name);
+		try {
+			c = ConnectionHelper.getConnection();
+
+			PreparedStatement ps = c.prepareStatement(sql);
+
+			ps.setString(1, "%" + combo_name.toUpperCase() + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+//				System.out.println(rs.getFloat("current_rate"));
+				return rs.getFloat("current_rate");
+			}
+			return 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			ConnectionHelper.close(c);
+		}
+	}
 }

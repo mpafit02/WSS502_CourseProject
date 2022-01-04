@@ -1,6 +1,6 @@
 // The root URL for the RESTful service
 var rootURL = "http://localhost:8080/WSS502_RestService/rest/useraccount";
-
+var loggedIn = false;
 // Retrieve wine list when application starts 
 // findAll();
 $(document).ready(function() {
@@ -77,6 +77,13 @@ function registerPage() {
 function logoutUser() {
 	$('#main_container').hide();
 	$('#login_container').show();
+	$('#inputFrom').val('0');
+	$('#inputTo').val('0');
+	$('#convert_message').text('');
+	$('#inputFromField').val('');
+	$('#outputFieldRate').text('');
+	$('#outputField').text('0.00');
+	loggedIn = false;
 }
 
 // Add a new user account by using a POST function
@@ -86,6 +93,7 @@ function addUserAccount() {
 	$("#userAccountForm").submit(function(e) {
 		e.preventDefault();
 	});
+	$('#register_message').text("");
 	if ($('#password').val() === $('#repeat_password').val()) {
 		// Check if email already exists
 		var email = $('#user_email').val();
@@ -112,7 +120,7 @@ function addUserAccount() {
 							$('#register_message').text("");
 							alert('UserAccount created successfully');
 
-							$('#UserId').val(data.id);
+							// $('#UserId').val(data.id);
 
 							$('#register_container').hide();
 							$('#login_container').show();
@@ -155,7 +163,7 @@ function loginUserAccount() {
 
 			console.log(list)
 			console.log(list.length)
-			console.log(list.length  == 1)
+			console.log(list.length == 1)
 			if (list.length == 1) {
 				// Clear the html list with id #userAccountsList
 				$('#userAccountsListMain li').remove();
@@ -166,10 +174,14 @@ function loginUserAccount() {
 					alert(userAccount.user_firstname + ' logged in successfully');
 				});
 
-				// $.getJSON('http://api.exchangeratesapi.io/v1/latest?access_key=44701c74d0733496222c23ea28102e9c&format=1&symbols=USD,GBP').success(updateRates);
+				$.getJSON('http://api.exchangeratesapi.io/v1/latest?access_key=44701c74d0733496222c23ea28102e9c&format=1&symbols=USD,GBP').success(updateRates);
 
 				$('#login_container').hide();
 				$('#main_container').show();
+
+				$('#user_email_login').val("");
+				$('#password_login').val("");
+				loggedIn = true;
 
 			} else {
 				alert('Wrong credentials!');
@@ -180,6 +192,52 @@ function loginUserAccount() {
 	});
 }
 
+function convertCurrency() {
+
+	$("#convertForm").submit(function(e) {
+		e.preventDefault();
+	});
+
+	var fromC = $('#inputFrom').find(":selected").val();
+	var toC = $('#inputTo').find(":selected").val();
+
+	var rate = 1;
+	var toRequest = true;
+	var comboName = "";
+	$('#convert_message').text('');
+	var amount = $('#inputFromField').val();
+
+	if (amount === "") {
+		$('#convert_message').text('Please provide an amount to convert!');
+		toRequest = false;
+	} else if (fromC === "EUR" && toC === "USD") {
+		comboName = "eur_usd";
+	} else if (fromC === "EUR" && toC === "GBP") {
+		comboName = "eur_gbp";
+	} else if (fromC === "USD" && toC === "EUR") {
+		comboName = "usd_eur";
+	} else if (fromC === "GBP" && toC === "EUR") {
+		comboName = "gbp_eur";
+	} else {
+		$('#convert_message').text('Not supported rates!');
+		toRequest = false;
+	}
+
+	if (toRequest) {
+		$.ajax({
+			type: 'GET',
+			url: rootURL + '/rates/' + comboName,
+			dataType: "json",
+			success: function(data, textStatus, jqXHR) {
+				console.log(data);
+				rate = data;
+				var result = amount * rate;
+				$('#outputField').text(result.toFixed(2));
+				$('#outputFieldRate').text(" rate: " + rate.toFixed(2));
+			},
+		});
+	}
+}
 
 // Convert the array of UserAccounts to an html list
 function renderList(data) {
@@ -198,12 +256,18 @@ function renderList(data) {
 
 // Update ta values sta sigkekrimena ids
 function renderDetails(userAccount) {
-	$('#UserId').val(userAccount.user_id);
+	// $('#UserId').val(userAccount.user_id);
 	$('#user_firstname').val(userAccount.user_firstname);
 	$('#user_lastname').val(userAccount.user_lastname);
 	$('#user_email').val(userAccount.user_email);
 	$('#password').val(userAccount.password);
 	$('#repeat_password').val(userAccount.repeat_password);
+}
+
+function rateToJSON(comboName) {
+	return JSON.stringify({
+		"combo_name": comboName,
+	});
 }
 
 function ratesToJSON(eur_usd, eur_gbp, usd_eur, gbp_eur) {
