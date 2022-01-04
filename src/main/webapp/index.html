@@ -1,15 +1,19 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>WSS502_RestService</title>
+<title>WSS502_CourseProject</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" media="screen and (min-width: 900px)"
+	href="widescreen.css">
+<link rel="stylesheet" media="screen and (max-width: 600px)"
+	href="smallscreen.css">
 <script src="js/jquery-1.7.1.min.js"></script>
 <script src="js/main.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -27,7 +31,7 @@
 </head>
 <body>
 
-	<div class="container">
+	<div class="container-fluid">
 		<br>
 		<p class="text-center">
 			This website was created by <a
@@ -37,9 +41,9 @@
 		</p>
 		<hr>
 
-		<div class="container">
+		<div class="container-fluid">
 			<div class="card bg-light">
-				<article class="card-body mx-auto" style="min-width: 400px;">
+				<article class="card-body mx-auto fix-article-width">
 					<div id="register_container">
 						<!-- <div class="header hidden">
 			<input type="text" id="name" class="hidden"/>
@@ -183,5 +187,8 @@
 				</article>
 			</div>
 		</div>
+		<hr>
+		<br>
+	</div>
 </body>
 </html>
