@@ -5,82 +5,145 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
 <script src="js/jquery-1.7.1.min.js"></script>
 <script src="js/main.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script> -->
 
 </head>
 <body>
-	<div id="register_container">
-		<div class="header">
-			<input type="text" id="name" />
-			<button id="search" onClick="findByName();">Search</button>
+	<div id="register_container" class="col-4">
+		<!-- <div class="header hidden">
+			<input type="text" id="name" class="hidden"/>
+			<button id="search" onClick="findByName();" class="hidden">Search</button>
 		</div>
-	
-		<div class="leftArea">
+
+		<div class="leftArea hidden">
 			<ul id="userAccountsList"></ul>
-		</div>
-	
-		<form id="userAccountForm">
-	
+		</div> -->
+		<form id="userAccountForm" class="form-signin px-4 py-3">
+			<h1>Sign up</h1>
 			<div class="mainArea">
-	
-				<button id="clear" onClick="clearForm();">Clear Form</button>
-				<br>
-				<label>UserId:</label>
-				<input id="UserId" name="user_id" type="text" disabled />
-				<br>
-				<label>Email:</label>
-				<input type="text" id="user_email" name="user_email" required /> 
-				<br>
-				<label>First Name:</label>
-				<input type="text" id="user_firstname" name="user_firstname" required />
-				<br>
-				<label>Last Name:</label>
-				<input type="text" id="user_lastname" name="last_name" required/> 
-				<br> 
-				<label>Password:</label>
-				<input type="text" id="password" name="password"  required/> 
-				<br> 
-				<label>Repeat Password:</label>
-				<input type="text" id="repeat_password" name="repeat_password" required/> 
-				<br> 
-				<p id="register_message" style="color:red;"></p>
+
+				<div class="form-group">
+					<label for="UserId">UserId:</label> <input id="UserId"
+						name="user_id" class="form-control" type="text" disabled />
+				</div>
+				<div class="form-group">
+					<label for="user_email">Email:</label> <input type="text"
+						id="user_email" class="form-control" name="user_email" required />
+				</div>
+				<div class="form-group">
+					<label for="user_firstname">First Name:</label> <input type="text"
+						id="user_firstname" class="form-control" name="user_firstname"
+						required />
+				</div>
+				<div class="form-group">
+					<label for="user_lastname">Last Name:</label> <input type="text"
+						id="user_lastname" class="form-control" name="last_name" required />
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label> <input type="text"
+						id="password" class="form-control" name="password" required />
+				</div>
+				<div class="form-group">
+					<label for="repeat_password">Repeat Password:</label> <input
+						type="text" id="repeat_password" class="form-control"
+						name="repeat_password" required />
+				</div>
+				<p id="register_message" class="text-danger"></p>
 			</div>
 			<br>
 			<div>
-				<button type="submit"  id="add" onClick="addUserAccount();">Add User</button>
+				<button type="button" id="clear" class="btn btn-secondary"
+					onClick="clearForm();">Clear Form</button>
+				<button type="button" id="login" class="btn btn-secondary"
+					onClick="loginPage();">Login</button>
+				<button type="submit" id="add" class="btn btn-primary"
+					onClick="addUserAccount();">Register</button>
 			</div>
 		</form>
-				<button type="button"  id="login" onClick="loginPage();">Login</button>
 	</div>
 
-	<div id="login_container" >
-		<form id="loginForm">
-		
+	<div id="login_container" class="col-4">
+		<form id="loginForm" class="form-signin px-4 py-3">
+			<h1>Log in</h1>
 			<div class="mainAreaLogin">
-				<br>
-				<label>Email:</label>
-				<input type="text" id="user_email_login" name="user_email" required /> 
-				<br> 
-				<label>Password:</label>
-				<input type="text" id="password_login" name="password"  required /> 
-				<br> 
-				<p id="login_message" style="color:red;"></p>
+				<div class="form-group">
+					<label for="user_email_login">Email:</label> <input type="text"
+						id="user_email_login" class="form-control" name="user_email"
+						required />
+				</div>
+				<div class="form-group">
+					<label for="password_login">Password:</label> <input type="text"
+						id="password_login" name="password" class="form-control" required />
+				</div>
+				<p class="text-danger" id="login_message"></p>
 			</div>
 			<br>
 			<div>
-				<button type="submit" id="login" onClick="loginUserAccount();">Login User</button>
+				<button type="button" id="register" onClick="registerPage();"
+					class="btn btn-secondary">Register</button>
+				<button type="submit" id="login" onClick="loginUserAccount();"
+					class="btn btn-primary">Login</button>
 			</div>
 		</form>
-				<button type="button" id="register" onClick="registerPage();">Register</button>
 	</div>
-	
-	
-	<div id="main_container" >
-	
-		<div class="leftAreaMain">
-			<ul id="userAccountsListMain"></ul>
-		</div>
+
+
+	<div id="main_container" class="col-4">
+		<form id="convertForm" class="form-signin  px-4 py-3">
+			<h1 id="welcomeUser"></h1>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputFrom">From</label> <select id="inputFrom"
+						class="form-control">
+						<option selected>From...</option>
+						<option value="EUR">EUR</option>
+						<option value="USD">USD</option>
+						<option value="GBP">GBP</option>
+					</select>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputTo">To</label> <select id="inputTo"
+						class="form-control">
+						<option selected>To...</option>
+						<option value="EUR">EUR</option>
+						<option value="USD">USD</option>
+						<option value="GBP">GBP</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="inputFromField">Amount</label>
+					<input type="text" class="form-control" id="inputFromField">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="outputField">Result</label>
+					<h4 id="outputField" class="text-justify">0.00</h4>
+				</div>
+			</div>
+			<button type="button" id="logout" onClick="logoutUser();"
+				class="btn btn-secondary">Log Out</button>
+			<button type="submit" class="btn btn-primary">Convert</button>
+		</form>
 	</div>
 </body>
 </html>

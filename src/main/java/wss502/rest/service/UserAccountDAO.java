@@ -189,8 +189,8 @@ public class UserAccountDAO {
 			PreparedStatement ps = c.prepareStatement(sql);
 
 			String hashedPassword = encryptPassword(user_account.getUser_email(), user_account.getPassword());
-
-			// System.out.println("Hashed Password: " + hashedPassword);
+			System.out.println(user_account.getUser_email() + " "+ user_account.getPassword());
+			System.out.println("Hashed Password: " + hashedPassword);
 
 			ps.setString(1, "%" + user_account.getUser_email().toUpperCase() + "%");
 			ps.setString(2, hashedPassword);
